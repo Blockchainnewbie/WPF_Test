@@ -11,19 +11,35 @@ namespace klassen_anwendung_staudinger
 {
     class MyDB
     {
+        public static IDataReader reader = null;
        private static string Connectionstring = "server=127.0.0.1;user id=root;password=;port=3306;database=staudinger;SslMode=Preferred; Allow Zero Datetime = true"; //SslMode=Preferred
+
+        private static MySqlConnection mySqlConnection = null;
+
+        public static void checkConnection()
+        {
+            if( mySqlConnection == null )
+            {
+                mySqlConnection = new MySqlConnection(Connectionstring);
+                mySqlConnection.Open();
+            }
+        }
 
         public static IDataReader db_exec(String abfrage)
         {
-            MySqlConnection mySqlConnection = new MySqlConnection(Connectionstring);
-            mySqlConnection.Open();
+            checkConnection();
 
             MySqlCommand command = mySqlConnection.CreateCommand();
             command.CommandText = abfrage;
 
-            IDataReader reader = command.ExecuteReader();
+            if (reader != null)
+                reader.Close();
 
-            return reader;
+            reader = command.ExecuteReader();
+
+
+
+            return Tools.iReader2dict(reader);
         }
 
         public static int db_insert_return_id(String abfrage)

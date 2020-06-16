@@ -1,5 +1,6 @@
 ﻿using MySql.Data.Types;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace klassen_anwendung_staudinger
     class Tools
     {
 
-        public static string conv_mysql_date_2_string( IDataReader reader , string feld )
+        public static string conv_mysql_date_2_string(IDataReader reader, string feld)
         {
             MySqlDateTime ob = (MySqlDateTime)reader.GetValue(reader.GetOrdinal(feld));
 
@@ -41,12 +42,12 @@ namespace klassen_anwendung_staudinger
         }
 
 
-        public static string makeSHA256( string wert )
+        public static string makeSHA256(string wert)
         {
             string resultat = "";
 
             SHA256 sha256Hash = SHA256.Create();
-            byte[] bytes = sha256Hash.ComputeHash( Encoding.UTF8.GetBytes( wert ) );
+            byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(wert));
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++)
             {
@@ -58,7 +59,7 @@ namespace klassen_anwendung_staudinger
         }
 
 
-        public static string mensch2computer( string inwert )
+        public static string mensch2computer(string inwert)
         {
             //12.456,23
             inwert = inwert.Replace(".", "");
@@ -74,6 +75,37 @@ namespace klassen_anwendung_staudinger
 
             return inwert;
         }
+        // Key    , Value
+        // data["id"] = 1
+        public static List<Dictionary<string, string>> iReader2dict(IDataReader reader)
+        {
+            List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();
 
+            // hat der Datareader Zeilen
+            while (reader.Read())
+            {
+                Dictionary<string, string> tmp = new Dictionary<string, string>();
+                //in jeder Zeile
+                // für alle Felder die Werte auslesen
+                for (int f = 0; f < reader.FieldCount; f++)
+                {
+                    string feldname = reader.GetName(f);
+                    string wert = reader[feldname].ToString();
+                    tmp.Add(feldname, wert);
+                }
+                data.Add(tmp);
+            }
+
+            return data;
+        }
     }
 }
+        // alle Zeilen nacheinander durchlaufen
+        // in jeder Zeile
+        // für alle felder die werte auslesen
+        
+
+
+        
+    
+

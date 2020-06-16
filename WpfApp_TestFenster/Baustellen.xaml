@@ -7,6 +7,44 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid >
-        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Width="auto" Text="Inhalt Baustellen"></TextBlock>
+        <ListBox x:Name="listing" Margin="12" Width="auto" SelectionChanged="listing_SelectionChanged" ></ListBox>
+
+        <Grid x:Name="formular"  >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"></ColumnDefinition>
+                <ColumnDefinition Width="19*"></ColumnDefinition>
+                <ColumnDefinition Width="12*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" Width="44" >Name:</Label>
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,17,0,18" Width="80" >Kostenträger:</Label>
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" Width="61" >Projekt_ID:</Label>
+            <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,17,0,18" Width="71" >Bauleiter_ID:</Label>
+            <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" Width="37" >Start:</Label>
+            <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,17,0,18" Width="39" >Ende:</Label>
+
+
+
+            <TextBox x:Name="bst_name" KeyDown="bst_name_KeyDown" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="bst_kostenträger" KeyDown="bst_name_KeyDown" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="bst_pro_id" KeyDown="bst_name_KeyDown" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="bst_bau_lei_id" KeyDown="bst_name_KeyDown" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="bst_start" KeyDown="bst_name_KeyDown" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="bst_end" KeyDown="bst_name_KeyDown" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <Button x:Name="bst_save"  Grid.Row="5" Grid.Column="3" Width="150" HorizontalAlignment="left" Margin="6,20,0,21" Click="kd_save_Click">speichern</Button>
+
+        </Grid>
     </Grid>
 </UserControl>

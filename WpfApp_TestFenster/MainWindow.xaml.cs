@@ -79,6 +79,9 @@ namespace WpfApp_TestFenster
         private void Kunden_Click(object sender, RoutedEventArgs e)
         {
             this.hideAllControlls();
+
+            // Im Kundenview die Liste neu laden und anzeigen
+            this.kunden.refreshList();
             this.kunden.Visibility = Visibility.Visible;
         }
 

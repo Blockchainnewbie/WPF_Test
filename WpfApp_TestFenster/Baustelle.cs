@@ -40,17 +40,18 @@ namespace klassen_anwendung_staudinger
                 return;
             }
             string sql = "SELECT * FROM baustelle WHERE id = " + in_id;
-            IDataReader reader = MyDB.db_exec(sql);
+            List< Dictionary< string, string >> data = MyDB.db_exec(sql);
 
-            if (reader.Read() == true)
+            if (data.Count > 0 )
             {
+                Dictionary<string, string> reader = data[0];
                 // übertragung der daten aus DB Result in klassen Variablen
                 this.name           = (string)reader["name"];
                 this.kostentraeger  = (string)reader["kostentraeger"];
-                this.projekt_id     = (int)reader["projekt_id"];
-                this.bau_leit_ma_id = (int)reader["bau_leit_ma_id"];
+                this.projekt_id     = Int32.Parse( reader["projekt_id"] );
+                this.bau_leit_ma_id = Int32.Parse( reader["bau_leit_ma_id"];
                 this.start_date     = Tools.conv_mysql_date_2_string( reader , "start_date" );
-                this.end_date       = Tools.conv_mysql_date_2_string(reader, "end_date" );
+                this.end_date       = Tools.conv_mysql_date_2_string( reader, "end_date" );
                 this.deleted        = Int32.Parse(reader["deleted"].ToString());
             }
             else

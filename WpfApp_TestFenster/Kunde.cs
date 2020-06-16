@@ -57,7 +57,7 @@ namespace klassen_anwendung_staudinger
             else
             {
                 this.id = 0;
-                Console.WriteLine("This ID is not exsit");
+                Console.WriteLine("This ID is not exist");
             }
             reader.Close();
         }
@@ -107,7 +107,11 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql = "SELECT * FROM kunde ";
+            string sql =    "SELECT * FROM kunde "+
+                            "WHERE " +
+                            "deleted = 0 " +
+                            "ORDER BY name ";
+
             IDataReader reader = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();
@@ -119,6 +123,13 @@ namespace klassen_anwendung_staudinger
             }
 
             return liste;
+        }
+
+        // Zeigt die Datenbank Spalten Namen in der Listbox, ansonsten würde nur der Klassenname erscheinen
+        public override string ToString()
+        {
+            return this.name +" \t "+ this.strasse +" \t "+ this.hsnr +" \t "+ this.plz +" \t "+ this.ort +" \t "+ this.land;
+            
         }
     }
 }
