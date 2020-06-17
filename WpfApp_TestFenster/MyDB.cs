@@ -25,21 +25,20 @@ namespace klassen_anwendung_staudinger
             }
         }
 
-        public static IDataReader db_exec(String abfrage)
+        public static List<Dictionary<string, string >> db_exec(String abfrage)
         {
             checkConnection();
 
             MySqlCommand command = mySqlConnection.CreateCommand();
             command.CommandText = abfrage;
 
-            if (reader != null)
-                reader.Close();
-
             reader = command.ExecuteReader();
 
+            List<Dictionary<string, string>> tmp = Tools.iReader2dict(reader);
 
-
-            return Tools.iReader2dict(reader);
+            reader.Close();
+            reader.Close();
+            return tmp;
         }
 
         public static int db_insert_return_id(String abfrage)

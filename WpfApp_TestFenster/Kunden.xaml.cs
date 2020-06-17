@@ -28,9 +28,9 @@ namespace WpfApp_TestFenster
         {
             InitializeComponent();
 
-            this.refreshList();
+            //this.refreshList();
         }
-
+        /*
         public void refreshList()
         {
             this.listing.Items.Clear();
@@ -92,7 +92,7 @@ namespace WpfApp_TestFenster
             Kunde k = new Kunde(this.curr_id);
 
             // die Werte aus dem Formular in die Instanzen(RAM) schreiben
-            k.name = this.kd_name.Text;
+            k.name = this.
             k.strasse = this.kd_strasse.Text;
             k.hsnr = this.kd_hsnr.Text;
             k.plz = this.kd_plz.Text;
@@ -113,8 +113,9 @@ namespace WpfApp_TestFenster
                 kd_save_it();
             }
         }
-        private void kd_dell_Click()
-        {   // Den aktuellen Kunden instanzieren
+
+        private void kd_dell_Click(object sender, RoutedEventArgs e)
+        {
             Kunde k = new Kunde(this.curr_id);
 
             //
@@ -125,5 +126,6 @@ namespace WpfApp_TestFenster
 
             this.refreshList();
         }
+        */
     }
 }

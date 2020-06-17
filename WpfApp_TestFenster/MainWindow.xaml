@@ -31,7 +31,7 @@
         <local:Faehigkeiten x:Name="faehigkeiten" Width="auto" Grid.Column="1"  Visibility="Collapsed"></local:Faehigkeiten>
         <local:Firmen x:Name="firmen" Width="auto" Grid.Column="1"  Visibility="Collapsed"></local:Firmen>
         <local:Kunden x:Name="kunden" Width="auto" Grid.Column="1"  Visibility="Collapsed"></local:Kunden>
-        <local:Mitarbeiter x:Name="mitarbeiter" Width="auto" Grid.Column="1" Visibility="Collapsed"></local:Mitarbeiter>
+        <local:MitarbeiterForm x:Name="mitarbeiter" Width="auto" Grid.Column="1" Visibility="Collapsed"></local:MitarbeiterForm>
         <local:Projekte x:Name="projekte" Width="auto" Grid.Column="1" Visibility="Collapsed"></local:Projekte>
         
     </Grid>

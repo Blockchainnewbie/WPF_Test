@@ -38,24 +38,25 @@ namespace klassen_anwendung_staudinger
                 return;
             }
             string sql = "SELECT * FROM datei WHERE id = " + in_id;
-            IDataReader reader = MyDB.db_exec(sql);
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
-            if (reader.Read() == true)
+            if ( data.Count > 0 )
             {
+                Dictionary<string, string> reader = data[0];
                 // übertragung der daten aus DB Result in klassen Variablen
-                this.rel_tab = (string)reader["rel_tab"];
-                this.rel_id = (int)reader["rel_id"];
-                this.org_name = (string)(reader["org_name"]);
-                this.gen_name = (string)(reader["gen_name"]);
+                this.rel_tab = reader["rel_tab"];
+                this.rel_id  = Int32.Parse(reader["rel_id"]);
+                this.org_name = (reader["org_name"]);
+                this.gen_name = (reader["gen_name"]);
                 this.deleted = Int32.Parse(reader["deleted"].ToString());
-                this.datum = Tools.conv_mysql_datetime_2_string(  reader , "datum" );
+                this.datum = reader [ "datum" ];
             }
             else
             {
                 this.id = 0;
                 Console.WriteLine("This ID is not exsit");
             }
-            reader.Close();
+         
         }
 
         private void neu()
@@ -101,14 +102,17 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql = "SELECT * FROM datei ";
-            IDataReader reader = MyDB.db_exec(sql);
+            string sql = "SELECT id FROM datei ";
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();
 
-            while (reader.Read() == true)
+            for (int x = 0; x < data.Count; x++)
             {
-                int id = (int)reader["id"];
+                Dictionary<string, string> tmp_data = data[x];
+
+                int id = Int32.Parse(tmp_data["id"]);
+
                 liste.Add(new Datei(id));
             }
 

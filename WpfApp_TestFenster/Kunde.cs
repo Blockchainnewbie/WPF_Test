@@ -41,25 +41,26 @@ namespace klassen_anwendung_staudinger
                 return;
             }
             string sql = "SELECT * FROM kunde WHERE id = " + in_id;
-            IDataReader reader = MyDB.db_exec(sql);
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
-            if (reader.Read() == true)
+            if (data.Count > 0)
             {
+                Dictionary<string, string> reader = data[0];
                 // übertragung der daten aus DB Result in klassen Variablen
-                this.name = (string)reader["name"];
+                this.name = reader["name"];
                 this.deleted = Int32.Parse(reader["deleted"].ToString());
-                this.strasse = (string)(reader["strasse"]);
-                this.hsnr = (string)(reader["hsnr"]);
-                this.plz = (string)(reader["plz"]);
-                this.ort = (string)(reader["ort"]);
-                this.land = (string)(reader["land"]);
+                this.strasse = reader["strasse"];
+                this.hsnr = reader["hsnr"];
+                this.plz = reader["plz"];
+                this.ort = reader["ort"];
+                this.land = reader["land"];
             }
             else
             {
                 this.id = 0;
                 Console.WriteLine("This ID is not exist");
             }
-            reader.Close();
+           
         }
 
         private void neu()
@@ -107,18 +108,21 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql =    "SELECT * FROM kunde "+
+            string sql =    "SELECT id FROM kunde "+
                             "WHERE " +
                             "deleted = 0 " +
                             "ORDER BY name ";
 
-            IDataReader reader = MyDB.db_exec(sql);
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();
 
-            while (reader.Read() == true)
+            for (int x = 0; x < data.Count; x++)
             {
-                int id = (int)reader["id"];
+                Dictionary<string, string> tmp_data = data[x];
+
+                int id = Int32.Parse(tmp_data["id"]);
+
                 liste.Add(new Kunde(id));
             }
 

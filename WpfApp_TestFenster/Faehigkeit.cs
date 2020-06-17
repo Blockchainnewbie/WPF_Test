@@ -31,20 +31,21 @@ namespace klassen_anwendung_staudinger
                 return;
             }
             string sql = "SELECT * FROM faehigkeit WHERE id = " + in_id;
-            IDataReader reader =  MyDB.db_exec(sql);
+            List<Dictionary<string, string>> data =  MyDB.db_exec(sql);
 
-            if( reader.Read() == true)
+            if( data.Count > 0 )
             {
+                Dictionary<string, string> reader = data[0];
                 // übertragung der daten aus DB Result in klassen Variablen
-                this.name = (string)reader["name"];
-                this.deleted = Int32.Parse(reader["deleted"].ToString());
+                this.name = reader["name"];
+                this.deleted = Int32.Parse(reader["deleted"]);
             }
             else
             {
                 this.id = 0;
-                Console.WriteLine("This ID is not exsit");
+                Console.WriteLine("This ID does not exist");
             }
-            reader.Close();
+        
         }
 
         private void neu()
@@ -88,15 +89,18 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql = "SELECT * FROM faehigkeit ORDER BY name  ";
-            IDataReader reader = MyDB.db_exec(sql);
+            string sql = "SELECT id FROM faehigkeit ORDER BY name  ";
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();
 
-            while (reader.Read() == true)
+            for (int x = 0; x < data.Count; x++)
             {
-                int id = (int)reader["id"];
-                liste.Add( new Faehigkeit(id) );
+                Dictionary<string, string> tmp_data = data[x];
+
+                int id = Int32.Parse(tmp_data["id"]);
+
+                liste.Add(new Faehigkeit(id));
             }
 
             return liste;

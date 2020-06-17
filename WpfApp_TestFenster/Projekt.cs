@@ -40,17 +40,18 @@ namespace klassen_anwendung_staudinger
                 return;
             }
             string sql = "SELECT * FROM projekt WHERE id = " + in_id;
-            IDataReader reader = MyDB.db_exec(sql);
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
-            if (reader.Read() == true)
+            if (data.Count > 0)
             {
+                Dictionary<string, string> reader = data[0];
                 // übertragung der daten aus DB Result in klassen Variablen
-                this.kunde_id = (int)(reader["kunde_id"]);
-                this.pro_leit_ma_id = (int)(reader["pro_leit_ma_id"]);
-                this.start_date = Tools.conv_mysql_date_2_string( reader , "start_date" );
-                this.end_date = Tools.conv_mysql_date_2_string( reader , "end_date" );
-                this.name = (string)reader["name"];
-                this.ort = (string)reader["ort"];
+                this.kunde_id = Int32.Parse(reader["kunde_id"]);
+                this.pro_leit_ma_id = Int32.Parse(reader["pro_leit_ma_id"]);
+                this.start_date = reader [ "start_date" ];
+                this.end_date = reader [ "end_date"  ];
+                this.name = reader["name"];
+                this.ort = reader["ort"];
                 this.deleted = Int32.Parse(reader["deleted"].ToString());
             }
             else
@@ -58,7 +59,7 @@ namespace klassen_anwendung_staudinger
                 this.id = 0;
                 Console.WriteLine("This ID is not exsit");
             }
-            reader.Close();
+ 
         }
 
         private void neu()
@@ -105,17 +106,19 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql = "SELECT * FROM projekt ";
-            IDataReader reader = MyDB.db_exec(sql);
+            string sql = "SELECT id FROM projekt ";
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();
 
-            while (reader.Read() == true)
+            for (int x = 0; x < data.Count; x++)
             {
-                int id = (int)reader["id"];
+                Dictionary<string, string> tmp_data = data[x];
+
+                int id = Int32.Parse(tmp_data["id"]);
+
                 liste.Add(new Projekt(id));
             }
-
             return liste;
         }
 

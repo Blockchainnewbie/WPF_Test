@@ -26,9 +26,9 @@ namespace WpfApp_TestFenster
         public Baustellen()
         {
             InitializeComponent();
-            this.refreshList();
+            //this.refreshList();
         }
-
+       /*
         public void refreshList()
         {
             this.listing.Items.Clear();
@@ -82,9 +82,9 @@ namespace WpfApp_TestFenster
            b.name = this.bst_name.Text;
             b.kostentraeger = this.bst_kostenträger.Text;
             b.projekt_id = this.bst_pro_id.Text;
-            b.plz = this.bst_bau_lei_id.Text;
-            b.ort = this.bst_start.Text;
-            b.land = this.bst_end.Text;
+            b.bau_leit_ma_id = this.bst_bau_lei_id.Text;
+            b.start_date = this.bst_start.Text;
+            b.end_date = this.bst_end.Text;
             b.save();
 
             this.refreshList();
@@ -97,7 +97,7 @@ namespace WpfApp_TestFenster
                 kd_save_it();
             }
         }
-
+*/
     }
 }
 

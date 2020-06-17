@@ -54,23 +54,24 @@ namespace klassen_anwendung_staudinger
                 return;
             }
             string sql = "SELECT * FROM mitarbeiter WHERE id = " + in_id;
-            IDataReader reader = MyDB.db_exec(sql);
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
-            if (reader.Read() == true)
+            if (data.Count > 0)
             {
+                Dictionary<string, string> reader = data[0];
                 // übertragung der daten aus DB Result in klassen Variablen
-                this.vorname = (string)reader["vorname"];
-                this.nachname = (string)reader["nachname"];
+                this.vorname = reader["vorname"];
+                this.nachname = reader["nachname"];
                 this.anrede = Int32.Parse(reader["anrede"].ToString());
-                this.strasse = (string)(reader["strasse"]);
-                this.hsnr = (string)(reader["hsnr"]);
-                this.plz = (string)(reader["plz"]);
-                this.ort = (string)(reader["ort"]);
-                this.land = (string)(reader["land"]);
-                this.tel = (string)reader["tel"];
-                this.email = (string)reader["email"];
-                this.persnr = (string)reader["persnr"];
-                this.firmen_id = (int)reader["firmen_id"];
+                this.strasse = reader["strasse"];
+                this.hsnr = reader["hsnr"];
+                this.plz = reader["plz"];
+                this.ort = reader["ort"];
+                this.land = reader["land"];
+                this.tel = reader["tel"];
+                this.email = reader["email"];
+                this.persnr = reader["persnr"];
+                this.firmen_id = Int32.Parse(reader["firmen_id"]);
                 this.deleted = Int32.Parse(reader["deleted"].ToString());
                 this.funktion = Int32.Parse(reader["funktion"].ToString());                              
             }
@@ -79,7 +80,7 @@ namespace klassen_anwendung_staudinger
                 this.id = 0;
                 Console.WriteLine("This ID is not exsit");
             }
-            reader.Close();
+            
         }
 
         private void neu()
@@ -135,17 +136,24 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql = "SELECT * FROM mitarbeiter ";
-            IDataReader reader = MyDB.db_exec(sql);
+            string sql = "SELECT id FROM mitarbeiter ";
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();
 
-            while (reader.Read() == true)
+            for (int x = 0; x < data.Count; x++)
             {
-                int id = (int)reader["id"];
+                Dictionary<string, string> tmp_data = data[x];
+
+                int id = Int32.Parse(tmp_data["id"]);
+
                 liste.Add(new Mitarbeiter(id));
             }
             return liste;
+        }
+        public override string ToString()
+        {
+            return this.vorname + " " + this.nachname;
         }
     }
 }

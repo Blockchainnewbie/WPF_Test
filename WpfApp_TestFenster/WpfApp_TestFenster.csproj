@@ -124,8 +124,8 @@
     <Compile Include="Kunden.xaml.cs">
       <DependentUpon>Kunden.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Mitarbeiter.xaml.cs">
-      <DependentUpon>Mitarbeiter.xaml</DependentUpon>
+    <Compile Include="MitarbeiterForm.xaml.cs">
+      <DependentUpon>MitarbeiterForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Projekte.xaml.cs">
       <DependentUpon>Projekte.xaml</DependentUpon>
@@ -172,7 +172,7 @@
     <Compile Include="Bemerkung.cs" />
     <Compile Include="Benutzer.cs" />
     <Compile Include="Datei.cs" />
-    <Compile Include="einsatz.cs" />
+    <Compile Include="Einsatz.cs" />
     <Compile Include="Faehigkeit.cs" />
     <Compile Include="Firma.cs" />
     <Compile Include="Kunde.cs" />
@@ -180,7 +180,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Mitarbeiter.xaml">
+    <Page Include="MitarbeiterForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

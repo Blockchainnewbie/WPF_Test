@@ -37,15 +37,16 @@ namespace klassen_anwendung_staudinger
                 return;
             }
             string sql = "SELECT * FROM einsatz WHERE id = " + in_id;
-            IDataReader reader = MyDB.db_exec(sql);
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
-            if (reader.Read() == true)
+            if (data.Count > 0)
             {
+                Dictionary<string, string> reader = data[0];
                 // übertragung der daten aus DB Result in klassen Variablen
-                this.start_date = Tools.conv_mysql_date_2_string(reader, "start_date");
-                this.end_date = Tools.conv_mysql_date_2_string(reader, "end_date");
-                this.bau_id = (int)(reader["bau_id"]);
-                this.ma_id = (int)(reader["ma_id"]);
+                this.start_date = reader [ "start_date"];
+                this.end_date = reader [ "end_date" ] ;
+                this.bau_id = Int32.Parse(reader["bau_id"]);
+                this.ma_id = Int32.Parse(reader["ma_id"]);
                 this.forecast = Int32.Parse(reader["forecast"].ToString());
                 this.deleted = Int32.Parse(reader["deleted"].ToString());
 
@@ -55,7 +56,6 @@ namespace klassen_anwendung_staudinger
                 this.id = 0;
                 Console.WriteLine("This ID is not exsit");
             }
-            reader.Close();
         }
 
         private void neu()
@@ -101,14 +101,17 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql = "SELECT * FROM einsatz ";
-            IDataReader reader = MyDB.db_exec(sql);
+            string sql = "SELECT id FROM einsatz ";
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();
 
-            while (reader.Read() == true)
+            for (int x = 0; x < data.Count; x++)
             {
-                int id = (int)reader["id"];
+                Dictionary<string, string> tmp_data = data[x];
+
+                int id = Int32.Parse(tmp_data["id"]);
+
                 liste.Add(new Einsatz(id));
             }
 

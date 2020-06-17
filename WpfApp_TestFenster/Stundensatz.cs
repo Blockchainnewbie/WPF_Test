@@ -38,14 +38,15 @@ namespace klassen_anwendung_staudinger
             }
 
             string sql = "SELECT * FROM stundensatz WHERE id = " + in_id;
-            IDataReader reader = MyDB.db_exec(sql);
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
-            if(reader.Read() == true)
+            if (data.Count > 0)
             {
-                this.ma_id = (int)reader["ma_id"];
-                this.faeihg_id = (int)reader["faeihg_id"];
-                this.ort = (string)reader["ort"];
-                this.euro = (float)reader["euro"];
+                Dictionary<string, string> reader = data[0];
+                this.ma_id = Int32.Parse(reader["ma_id"]);
+                this.faeihg_id = Int32.Parse(reader["faeihg_id"]);
+                this.ort = reader["ort"];
+                this.euro = float.Parse( reader["euro"] );
                 this.deleted = Int32.Parse(reader["deleted"].ToString());
             }
             else
@@ -53,7 +54,7 @@ namespace klassen_anwendung_staudinger
                 this.id = 0;
             }
 
-            reader.Close();
+        
         }
 
         public void neu()
@@ -101,14 +102,17 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql = "SELECT * FROM stundensatz ";
-            IDataReader reader = MyDB.db_exec(sql);
+            string sql = "SELECT id FROM stundensatz ";
+            List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();
 
-            while (reader.Read() == true)
+            for (int x = 0; x < data.Count; x++)
             {
-                int id = (int)reader["id"];
+                Dictionary<string, string> tmp_data = data[x];
+
+                int id = Int32.Parse(tmp_data["id"]);
+
                 liste.Add(new Stundensatz(id));
             }
             return liste;
