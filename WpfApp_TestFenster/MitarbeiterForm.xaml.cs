@@ -100,13 +100,20 @@ namespace WpfApp_TestFenster
             f.email = this.email.Text;
             f.persnr = this.persnr.Text;
 
+            // Anrede Combobox in Int umwandeln
+
             int selIndex = this.f_firma.SelectedIndex;
             if ( selIndex != -1 )
             {
                 f.firmen_id = ((Firma)(this.f_firma.Items[selIndex])).id;
             }
-            
-            // Abfrage schreiben für Anrede und Funktion
+
+          /*  int cobIndex = this.cbanrede.SelectedIndex;
+           if ( cobIndex != -1)
+            {
+                f.anrede = ((Mitarbeiter)this.cbanrede.SelectedItem[cobIndex])).anrede;
+            }
+            // Abfrage schreiben für Anrede und Funktion*/
             f.save();
 
 

@@ -42,24 +42,28 @@ namespace WpfApp_TestFenster
         private void Baustellen_Click(object sender, RoutedEventArgs e)
         {
             this.hideAllControlls();
+            this.baustellen.refreshList();
             this.baustellen.Visibility = Visibility.Visible;
         }
 
         private void Bemerkungen_Click(object sender, RoutedEventArgs e)
         {
             this.hideAllControlls();
+            this.bemerkungen.refreshList();
             this.bemerkungen.Visibility = Visibility.Visible;
         }
 
         private void Benutzer_Click(object sender, RoutedEventArgs e)
         {
             this.hideAllControlls();
+            this.benutzer.refreshList();
             this.benutzer.Visibility = Visibility.Visible;
         }
 
         private void Einsaetze_Click(object sender, RoutedEventArgs e)
         {
             this.hideAllControlls();
+            this.einsaetze.refreshList();
             this.einsaetze.Visibility = Visibility.Visible;
         }
 
@@ -73,6 +77,7 @@ namespace WpfApp_TestFenster
         private void Firmen_Click(object sender, RoutedEventArgs e)
         {
             this.hideAllControlls();
+            this.firmen.refreshList();
             this.firmen.Visibility = Visibility.Visible;
         }
 
@@ -81,7 +86,7 @@ namespace WpfApp_TestFenster
             this.hideAllControlls();
 
             // Im Kundenview die Liste neu laden und anzeigen
-            //this.kunden.refreshList();
+            this.kunden.refreshList();
             this.kunden.Visibility = Visibility.Visible;
         }
 
@@ -95,6 +100,7 @@ namespace WpfApp_TestFenster
         private void Projekte_Click(object sender, RoutedEventArgs e)
         {
             this.hideAllControlls();
+            //this.projekte.refreshList();
             this.projekte.Visibility = Visibility.Visible;
         }
     }

@@ -23,109 +23,86 @@ namespace WpfApp_TestFenster
     public partial class Kunden : UserControl
     {
         public int curr_id = 0;
-
         public Kunden()
         {
             InitializeComponent();
-
-            //this.refreshList();
+            refreshList();
         }
-        /*
+
         public void refreshList()
         {
             this.listing.Items.Clear();
 
-            // leeren neuen Kunden anlegen und als 1 Eintrag in die Liste einsetzen
-            Kunde kd_neu = new Kunde();
-            kd_neu.name = " >>> NEUEN Kunde anlegen <<< ";
-            this.listing.Items.Add(kd_neu);
+            Kunde f_neu = new Kunde();
+            f_neu.name = " >>> NEUEN Kunden anlegen <<< ";
+            this.listing.Items.Add(f_neu);
 
-            // alle Kunden aus Datenbank in eine Arrayliste einlesen
-            ArrayList alleDaten = Kunde.getAll();
+            ArrayList alleKunden = Kunde.getAll();
 
-            // alle Kunden Instanzen der Listbox als Zeile hinzufügen
-            foreach (Kunde k in alleDaten)
+            foreach (Kunde f in alleKunden)
             {
-                this.listing.Items.Add(k);
+                this.listing.Items.Add(f);
             }
 
-            // DB Id des aktuell ausgewählten Kunden
             this.curr_id = 0;
 
-            // im Fenster die Liste sichtbar machen
-            // das Formular ausblenden
             this.formular.Visibility = Visibility.Collapsed;
             this.listing.Visibility = Visibility.Visible;
         }
+
         // Holt die Daten aus der Datenbank
         private void listing_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.listing.SelectedIndex >= 0)
             {
-                // Datenbank ID des angeklickten Kunden anzeigen
                 this.curr_id = ((Kunde)this.listing.Items[this.listing.SelectedIndex]).id;
 
-                // Liste unsichtbar nachdem angeklickt 
                 this.listing.Visibility = Visibility.Collapsed;
 
-                Kunde k = new Kunde(this.curr_id);
+                Kunde b = new Kunde(this.curr_id);
+                this.Name = b.name;
+                this.strasse.Text = b.strasse;
+                this.hsnr.Text = b.hsnr;
+                this.plz.Text = b.plz;
+                this.ort.Text = b.ort;
+                this.land.Text = b.land;
 
-                this.kd_name.Text = k.name;
-                this.kd_strasse.Text = k.strasse;
-                this.kd_hsnr.Text = k.hsnr;
-                this.kd_plz.Text = k.plz;
-                this.kd_ort.Text = k.ort;
-                this.kd_land.Text = k.land;
-
-                // Formular sichtbar schalten
                 this.formular.Visibility = Visibility.Visible;
             }
         }
+
         // Schreibt die Daten in die Datenbank
-        private void kd_save_Click(object sender, RoutedEventArgs e)
+        private void f_save_Click(object sender, RoutedEventArgs e)
         {
-            kd_save_it();
+            F_save_it();
         }
 
-        private void kd_save_it()
-        {   // Den aktuellen Kunden instanzieren
-            Kunde k = new Kunde(this.curr_id);
+        private void F_save_it()
+        {
+            Kunde b = new Kunde(this.curr_id);
 
-            // die Werte aus dem Formular in die Instanzen(RAM) schreiben
-            k.name = this.
-            k.strasse = this.kd_strasse.Text;
-            k.hsnr = this.kd_hsnr.Text;
-            k.plz = this.kd_plz.Text;
-            k.ort = this.kd_ort.Text;
-            k.land = this.kd_land.Text;
+            b.name = this.Name;
+            b.strasse = this.strasse.Text;
+          
 
-            // Daten an MySQL senden: RAM >> HDD
-            k.save();
+          
+           
+            b.save();
 
-            // Liste aktualisiert neu laden
             this.refreshList();
         }
 
-        private void kd_name_KeyDown(object sender, KeyEventArgs e)
+        private void f_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                kd_save_it();
+                F_save_it();
             }
         }
 
-        private void kd_dell_Click(object sender, RoutedEventArgs e)
+        private void listing_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
         {
-            Kunde k = new Kunde(this.curr_id);
-
-            //
-            k.deleted = 1;
-
-            // Daten an MySQL senden: RAM >> HDD
-            k.save();
-
-            this.refreshList();
+            return;
         }
-        */
     }
 }

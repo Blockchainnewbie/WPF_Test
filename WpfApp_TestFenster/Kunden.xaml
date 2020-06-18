@@ -7,6 +7,48 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
+        <ListBox x:Name="listing" Margin="12,11,12,13" Width="auto" SelectionChanged="listing_SelectionChanged" ></ListBox>
+
+        <Grid x:Name="formular"  >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"></ColumnDefinition>
+                <ColumnDefinition Width="400"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Name:</Label>
+            <TextBox x:Name="name" KeyDown="f_KeyDown" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
+
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Strasse:</Label>
+            <TextBox x:Name="strasse" Grid.Row="1" Grid.Column="0" KeyDown="f_KeyDown" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18" />
+
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >PLZ:</Label>
+            <TextBox x:Name="plz" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="104,25,0,17" Height="18"/>
+
+            <Label Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Ort:</Label>
+            <TextBox x:Name="ort" KeyDown="f_KeyDown" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
+            
+            <Label Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Hsnr.:</Label>
+            <TextBox x:Name="hsnr" KeyDown="f_KeyDown" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
+                   
+            <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Land:</Label>
+            <TextBox x:Name="land" KeyDown="f_KeyDown" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
+                       
+            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
+                <Button x:Name="save"  Grid.Row="6" Grid.Column="3" Width="150" HorizontalAlignment="Left" Margin="103,20,0,21" Click="f_save_Click">Speichern</Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

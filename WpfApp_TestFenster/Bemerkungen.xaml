@@ -28,17 +28,17 @@
                 <RowDefinition Height="60"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" >Text:</Label>
-            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,17,0,18" >Rel Tab:</Label>
-            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" >Rel ID:</Label>
-            <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,17,0,18" >Datum</Label>
-            <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" >Benutzer ID:</Label>
-            
-            <TextBox x:Name="bem_text" KeyDown="kd_name_KeyDown" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
-            <TextBox x:Name="bem_rel_tab" KeyDown="kd_name_KeyDown" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
-            <TextBox x:Name="bem_rel_id" KeyDown="kd_name_KeyDown" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
-            <TextBox x:Name="bem_datum" KeyDown="kd_name_KeyDown" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
-            <TextBox x:Name="bem_benutzer_id" KeyDown="kd_name_KeyDown" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" >Text:</Label>
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,17,0,18" >Rel Tab:</Label>
+            <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" >Rel ID:</Label>
+            <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,17,0,18" >Datum</Label>
+            <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" >Benutzer ID:</Label>
+
+            <TextBox x:Name="bem_text" KeyDown="kd_name_KeyDown" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,17" Height="83" TextWrapping="Wrap" Grid.RowSpan="2" AcceptsReturn="True"></TextBox>
+            <TextBox x:Name="bem_rel_tab" KeyDown="kd_name_KeyDown" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="bem_rel_id" KeyDown="kd_name_KeyDown" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="bem_datum" KeyDown="kd_name_KeyDown" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="bem_benutzer_id" KeyDown="kd_name_KeyDown" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
 
             <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
                 <Button x:Name="kd_save"  Grid.Row="6" Grid.Column="3" Width="150" HorizontalAlignment="left" Margin="6,20,0,21" Click="kd_save_Click">speichern</Button>

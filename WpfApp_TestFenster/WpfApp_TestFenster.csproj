@@ -170,7 +170,7 @@
     </Compile>
     <Compile Include="Baustelle.cs" />
     <Compile Include="Bemerkung.cs" />
-    <Compile Include="Benutzer.cs" />
+    <Compile Include="Benutzer1.cs" />
     <Compile Include="Datei.cs" />
     <Compile Include="Einsatz.cs" />
     <Compile Include="Faehigkeit.cs" />

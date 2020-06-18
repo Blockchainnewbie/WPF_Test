@@ -34,7 +34,7 @@ namespace WpfApp_TestFenster
             this.listing.Items.Clear();
 
             Baustelle bst_neu = new Baustelle();
-            bst_neu.name = " >>> NEUEN Baustelle anlegen <<< ";
+            bst_neu.name = " >>> NEUE Baustelle anlegen <<< ";
             this.listing.Items.Add(bst_neu);
 
             ArrayList alleDaten = Baustelle.getAll();
@@ -49,6 +49,7 @@ namespace WpfApp_TestFenster
             this.formular.Visibility = Visibility.Collapsed;
             this.listing.Visibility = Visibility.Visible;
         }
+
         // Holt die Daten aus der Datenbank
         private void listing_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -61,15 +62,18 @@ namespace WpfApp_TestFenster
                 Baustelle b = new Baustelle(this.curr_id);
 
                 this.bst_name.Text = b.name;
-                this.bst_kostenträger.Text = b.kostentraeger;
-                this.bst_pro_id.Text = b.pro_id;
-                this.bst_bau_lei_id.Text = b.bau_leit_ma_id.ToString();
+                this.bst_kostentraeger.Text = b.kostentraeger;
+                this.bst_pro_id.Text = b.projekt_id.ToString();
+                this.bst_bau_ma_lei_id.Text = b.bau_leit_ma_id.ToString();
                 this.bst_start.Text = b.start_date;
-                this.bst_end.Text = b.end_date;
+                this.bst_ende.Text = b.end_date;
 
                 this.formular.Visibility = Visibility.Visible;
             }
         }
+
+
+
         // Schreibt die Daten in die Datenbank
         private void kd_save_Click(object sender, RoutedEventArgs e)
         {
@@ -79,12 +83,13 @@ namespace WpfApp_TestFenster
         private void kd_save_it()
         {
             Baustelle b = new Baustelle(this.curr_id);
-           b.name = this.bst_name.Text;
-            b.kostentraeger = this.bst_kostenträger.Text;
-            b.projekt_id = this.bst_pro_id.Text;
-            b.plz = this.bst_bau_lei_id.Text;
-            b.ort = this.bst_start.Text;
-            b.land = this.bst_end.Text;
+
+            b.name = this.bst_name.Text;
+            b.kostentraeger = this.bst_kostentraeger.Text;
+            b.projekt_id = Int32.Parse(this.bst_pro_id.Text);
+            b.bau_leit_ma_id = Int32.Parse(this.bst_bau_ma_lei_id.Text);
+            b.start_date = this.bst_start.Text;
+            b.end_date = this.bst_ende.Text;
             b.save();
 
             this.refreshList();

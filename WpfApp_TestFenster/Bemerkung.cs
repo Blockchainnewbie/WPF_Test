@@ -123,5 +123,9 @@ namespace klassen_anwendung_staudinger
             return liste;
         }
 
+        public override string ToString()
+        {
+            return this.text;
+        }
     }
 }

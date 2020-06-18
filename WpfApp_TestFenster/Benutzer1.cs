@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace klassen_anwendung_staudinger
 {
-    class Benutzer
+    class Benutzer1
     {
         public int id { get; set; }
         public string vorname { get; set; }
@@ -19,7 +19,7 @@ namespace klassen_anwendung_staudinger
         private string passwort { get; set; }
         public int deleted { get; set; }
 
-        public Benutzer()
+        public Benutzer1()
         {
             this.id = 0;
             this.vorname = "";
@@ -30,7 +30,7 @@ namespace klassen_anwendung_staudinger
             this.deleted = 0;
         }
 
-        public Benutzer(int in_id)
+        public Benutzer1(int in_id)
         {
             this.id = in_id;
 
@@ -48,7 +48,7 @@ namespace klassen_anwendung_staudinger
                 this.vorname    = reader["vorname"];
                 this.nachname   = reader["nachname"];
                 this.typ        = Int32.Parse(reader["typ"]);
-                this.email      = (reader["email"]);
+                this.email      = reader["email"];
                 this.passwort   = reader["passwort"];
                 this.deleted    = Int32.Parse(reader["deleted"]);
             }
@@ -120,9 +120,14 @@ namespace klassen_anwendung_staudinger
 
                 int id = Int32.Parse(tmp_data["id"]);
 
-                liste.Add(new Benutzer(id));
+                liste.Add(new Benutzer1(id));
             }
             return liste;
+        }
+
+        public override string ToString()
+        {
+            return this.nachname + " " + this.vorname;
         }
     }
 }

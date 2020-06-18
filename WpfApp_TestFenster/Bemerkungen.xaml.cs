@@ -19,10 +19,10 @@ namespace WpfApp_TestFenster
 {
     /// <summary>
     /// Interaktionslogik für Bemerkungen.xaml
-    /// </summary>
+   /// </summary>
     public partial class Bemerkungen : UserControl
     {
-        public int curr_id = 0;
+      public int curr_id = 0;
         public Bemerkungen()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace WpfApp_TestFenster
 
             ArrayList alleBem = Bemerkung.getAll();
 
-            foreach (Bemerkungen b in alleBem)
+            foreach (Bemerkung b in alleBem)
             {
                 this.listing.Items.Add(b);
             }
@@ -58,14 +58,14 @@ namespace WpfApp_TestFenster
 
                 this.listing.Visibility = Visibility.Collapsed;
 
-                B b = new Baustelle(this.curr_id);
+                Bemerkung b = new Bemerkung(this.curr_id);
 
-                this.bst_name.Text = b.name;
-                this.bst_kostentraeger.Text = b.kostentraeger;
-                this.bst_pro_id.Text = b.projekt_id.ToString();
-                this.bst_bau_ma_lei_id.Text = b.bau_leit_ma_id.ToString();
-                this.bst_start.Text = b.start_date;
-                this.bst_ende.Text = b.end_date;
+                this.bem_text.Text = b.text;
+                this.bem_rel_tab.Text = b.rel_tab;
+                this.bem_rel_id.Text = b.rel_id.ToString();
+                this.bem_datum.Text = b.datum;
+                this.bem_benutzer_id.Text = b.benutzer_id.ToString();
+               
 
                 this.formular.Visibility = Visibility.Visible;
             }
@@ -78,13 +78,13 @@ namespace WpfApp_TestFenster
 
         private void kd_save_it()
         {
-            Baustelle b = new Baustelle(this.curr_id);
-            b.name = this.bst_name.Text;
-            b.kostentraeger = this.bst_kostentraeger.Text;
-            b.projekt_id = Int32.Parse(this.bst_pro_id.Text);
-            b.bau_leit_ma_id = Int32.Parse(this.bst_bau_ma_lei_id.Text);
-            b.start_date = this.bst_start.Text;
-            b.end_date = this.bst_ende.Text;
+            Bemerkung b = new Bemerkung(this.curr_id);
+            b.text = this.bem_text.Text;
+            b.rel_tab = this.bem_rel_tab.Text;
+            b.rel_id = Int32.Parse(this.bem_rel_id.Text);
+            b.datum = this.bem_datum.Text;
+            b.benutzer_id = Int32.Parse(this.bem_benutzer_id.Text);
+           
 
             b.save();
 
