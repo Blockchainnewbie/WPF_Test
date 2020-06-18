@@ -49,12 +49,21 @@ namespace WpfApp_TestFenster
 
                 Mitarbeiter m = new Mitarbeiter(this.curr_id);
 
+                // Blendet die Daten in den Textboxen ein
                 this.vorname.Text = m.vorname;
                 this.nachname.Text = m.nachname;
-                this.anrede.Text = m.anrede;
+                this.strasse.Text = m.strasse;
+                this.hsnr.Text = m.hsnr;
+                this.plz.Text = m.plz;
+                this.ort.Text = m.ort;
+                this.land.Text = m.land;
+                this.plz.Text = m.plz;
+                this.tel.Text = m.tel;
+                this.email.Text = m.email;
+                this.persnr.Text = m.persnr;
 
                 ArrayList allFirmen = Firma.getAll();
-
+                // Combobox Auswahl 
                 this.f_firma.Items.Clear();
 
                 foreach (Firma firm in allFirmen)
@@ -66,7 +75,9 @@ namespace WpfApp_TestFenster
                         this.f_firma.SelectedIndex = this.f_firma.Items.Count - 1;
                     }
                 }
+
                 this.formular.Visibility = Visibility.Visible;
+
             }
         }
 
@@ -80,6 +91,14 @@ namespace WpfApp_TestFenster
             Mitarbeiter f = new Mitarbeiter(this.curr_id);
             f.vorname = this.vorname.Text;
             f.nachname = this.nachname.Text;
+            f.strasse = this.strasse.Text;
+            f.hsnr = this.hsnr.Text;
+            f.plz = this.plz.Text;
+            f.ort = this.ort.Text;
+            f.land = this.land.Text;
+            f.tel = this.tel.Text;
+            f.email = this.email.Text;
+            f.persnr = this.persnr.Text;
 
             int selIndex = this.f_firma.SelectedIndex;
             if ( selIndex != -1 )
@@ -87,7 +106,7 @@ namespace WpfApp_TestFenster
                 f.firmen_id = ((Firma)(this.f_firma.Items[selIndex])).id;
             }
             
-
+            // Abfrage schreiben für Anrede und Funktion
             f.save();
 
 
@@ -102,5 +121,9 @@ namespace WpfApp_TestFenster
             }
         }
 
+        public override string ToString()
+        {
+            return this.nachname + " " + this.vorname;
+        }
     }
 }

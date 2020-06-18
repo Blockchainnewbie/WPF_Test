@@ -18,28 +18,28 @@ using System.Windows.Shapes;
 namespace WpfApp_TestFenster
 {
     /// <summary>
-    /// Interaktionslogik für Baustellen.xaml
+    /// Interaktionslogik für Bemerkungen.xaml
     /// </summary>
-    public partial class Baustellen : UserControl
+    public partial class Bemerkungen : UserControl
     {
         public int curr_id = 0;
-        public Baustellen()
+        public Bemerkungen()
         {
             InitializeComponent();
-            //this.refreshList();
+            this.refreshList();
         }
-       /*
+
         public void refreshList()
         {
             this.listing.Items.Clear();
 
-            Baustelle bst_neu = new Baustelle();
-            bst_neu.name = " >>> NEUEN Baustelle anlegen <<< ";
-            this.listing.Items.Add(bst_neu);
+            Bemerkung bem_neu = new Bemerkung();
+            bem_neu.text = " >>> NEUEN Text anlegen <<< ";
+            this.listing.Items.Add(bem_neu);
 
-            ArrayList alleDaten = Baustelle.getAll();
+            ArrayList alleBem = Bemerkung.getAll();
 
-            foreach (Baustelle b in alleDaten)
+            foreach (Bemerkungen b in alleBem)
             {
                 this.listing.Items.Add(b);
             }
@@ -54,18 +54,18 @@ namespace WpfApp_TestFenster
         {
             if (this.listing.SelectedIndex >= 0)
             {
-                this.curr_id = ((Baustelle)this.listing.Items[this.listing.SelectedIndex]).id;
+                this.curr_id = ((Bemerkung)this.listing.Items[this.listing.SelectedIndex]).id;
 
                 this.listing.Visibility = Visibility.Collapsed;
 
-                Baustelle b = new Baustelle(this.curr_id);
+                B b = new Baustelle(this.curr_id);
 
                 this.bst_name.Text = b.name;
-                this.bst_kostenträger.Text = b.kostentraeger;
-                this.bst_pro_id.Text = b.pro_id;
-                this.bst_bau_lei_id.Text = b.bau_leit_ma_id.ToString();
+                this.bst_kostentraeger.Text = b.kostentraeger;
+                this.bst_pro_id.Text = b.projekt_id.ToString();
+                this.bst_bau_ma_lei_id.Text = b.bau_leit_ma_id.ToString();
                 this.bst_start.Text = b.start_date;
-                this.bst_end.Text = b.end_date;
+                this.bst_ende.Text = b.end_date;
 
                 this.formular.Visibility = Visibility.Visible;
             }
@@ -79,12 +79,13 @@ namespace WpfApp_TestFenster
         private void kd_save_it()
         {
             Baustelle b = new Baustelle(this.curr_id);
-           b.name = this.bst_name.Text;
-            b.kostentraeger = this.bst_kostenträger.Text;
-            b.projekt_id = this.bst_pro_id.Text;
-            b.bau_leit_ma_id = this.bst_bau_lei_id.Text;
+            b.name = this.bst_name.Text;
+            b.kostentraeger = this.bst_kostentraeger.Text;
+            b.projekt_id = Int32.Parse(this.bst_pro_id.Text);
+            b.bau_leit_ma_id = Int32.Parse(this.bst_bau_ma_lei_id.Text);
             b.start_date = this.bst_start.Text;
-            b.end_date = this.bst_end.Text;
+            b.end_date = this.bst_ende.Text;
+
             b.save();
 
             this.refreshList();
@@ -97,7 +98,5 @@ namespace WpfApp_TestFenster
                 kd_save_it();
             }
         }
-*/
     }
 }
-

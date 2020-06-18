@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp_TestFenster"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="1000">
     <Grid>
         <ListBox x:Name="listing" Margin="12,11,12,13" Width="auto" SelectionChanged="listing_SelectionChanged" ></ListBox>
 
@@ -13,7 +13,7 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="400"></ColumnDefinition>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="400"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -38,25 +38,33 @@
             <ComboBox x:Name="f_firma" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="104,25,0,17" Height="18"/>
 
             <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Anrede:</Label>
-            <TextBox x:Name="anrede" KeyDown="f_KeyDown" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
+            <ComboBox x:Name="cbanrede" KeyDown="f_KeyDown" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18">
+                <ComboBoxItem Content="Herr"/>
+                <ComboBoxItem Content="Frau"/>
+                <ComboBoxItem Content="Mix"/>
+            </ComboBox>
 
             <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Strasse:</Label>
-            <TextBox x:Name="Strasse" KeyDown="f_KeyDown" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
+            <TextBox x:Name="strasse" KeyDown="f_KeyDown" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
 
             <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Funktion:</Label>
-            <TextBox x:Name="funktion" KeyDown="f_KeyDown" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
-            
+            <ComboBox x:Name="funktion" KeyDown="f_KeyDown" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18">
+                <ComboBoxItem Content="CEO"/>
+                <ComboBoxItem Content="COF"/>
+                <ComboBoxItem Content="Slave"/>
+            </ComboBox>
+
             <Label Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Hsnr.:</Label>
-            <TextBox x:Name="Hsnr" KeyDown="f_KeyDown" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
+            <TextBox x:Name="hsnr" KeyDown="f_KeyDown" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
 
             <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >PLZ:</Label>
-            <TextBox x:Name="Postleitzahl" KeyDown="f_KeyDown" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
+            <TextBox x:Name="plz" KeyDown="f_KeyDown" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
 
             <Label Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Ort:</Label>
-            <TextBox x:Name="Plz" KeyDown="f_KeyDown" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
+            <TextBox x:Name="ort" KeyDown="f_KeyDown" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
 
             <Label Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Land:</Label>
-            <TextBox x:Name="ort" KeyDown="f_KeyDown" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
+            <TextBox x:Name="land" KeyDown="f_KeyDown" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
 
             <Label Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Telefon:</Label>
             <TextBox x:Name="tel" KeyDown="f_KeyDown" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
