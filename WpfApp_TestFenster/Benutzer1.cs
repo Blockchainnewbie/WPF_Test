@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -109,7 +109,7 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql = "SELECT id FROM benutzer ";
+            string sql = "SELECT id FROM benutzer WHERE deleted ='0'";
             List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();

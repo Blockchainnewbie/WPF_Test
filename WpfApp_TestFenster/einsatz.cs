@@ -101,7 +101,7 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql = "SELECT id FROM einsatz ";
+            string sql = "SELECT id FROM einsatz WHERE deleted ='0'";
             List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();
@@ -119,7 +119,16 @@ namespace klassen_anwendung_staudinger
         }
         public override string ToString()
         {
-            return this.id + " \t " + this.bau_id;
+
+            if ( this.id == 0 )
+            {
+                return "<<< NEUEN Einsatz anlegen >>>";
+            }
+            Baustelle b = new Baustelle(this.bau_id);
+            Mitarbeiter m = new Mitarbeiter(this.ma_id);
+            return this.id + " \t " + b.name + " \t \t \t " + m.vorname + " " + m.nachname;
+
+           
         }
 
     }

@@ -106,7 +106,7 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql = "SELECT id FROM projekt ";
+            string sql = " SELECT id FROM projekt WHERE deleted='0' ";
             List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();
@@ -121,7 +121,10 @@ namespace klassen_anwendung_staudinger
             }
             return liste;
         }
-
+        public override string ToString()
+        {
+            return this.name;
+        }
 
     }
 }

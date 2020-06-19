@@ -48,12 +48,12 @@ namespace klassen_anwendung_staudinger
                 Dictionary<string, string> reader = data[0];
                 // übertragung der daten aus DB Result in klassen Variablen
                 this.name = reader["name"];
-                this.deleted = Int32.Parse(reader["deleted"].ToString());
                 this.strasse = reader["strasse"];
                 this.hsnr = reader["hsnr"];
                 this.plz = reader["plz"];
                 this.ort = reader["ort"];
                 this.land = reader["land"];
+                this.deleted = Int32.Parse(reader["deleted"].ToString());
             }
             else
             {
@@ -108,6 +108,7 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
+            // Zeigt nur die aktiven (ungelöschten) Einträge in der Liste
             string sql =    "SELECT id FROM kunde "+
                             "WHERE " +
                             "deleted = 0 " +

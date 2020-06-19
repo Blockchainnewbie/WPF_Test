@@ -98,5 +98,12 @@ namespace WpfApp_TestFenster
                 kd_save_it();
             }
         }
+
+        private void kd_delete_Click(object sender, RoutedEventArgs e)
+        {
+            Bemerkung foo = new Bemerkung(this.curr_id);
+            foo.delete();
+            this.refreshList();
+        }
     }
 }

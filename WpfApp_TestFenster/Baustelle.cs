@@ -111,7 +111,7 @@ namespace klassen_anwendung_staudinger
         public static ArrayList getAll()
         {
             // Holt die IDs der Baustellen
-            string sql = "SELECT id FROM baustelle ";
+            string sql = "SELECT `id` FROM `baustelle` WHERE `deleted` = '0'";
             List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();
@@ -130,7 +130,15 @@ namespace klassen_anwendung_staudinger
 
         public override string ToString()
         {
-            return this.name + " " + this.projekt_id;
+            if ( this.projekt_id == 0  )
+            {
+                return this.name;
+            }
+            else
+            {
+                return this.name + "\t \t \t" + this.projekt_id;
+            }
+            
         }
 
     }

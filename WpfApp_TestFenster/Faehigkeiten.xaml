@@ -19,12 +19,14 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" >Name:</Label>
             <TextBox x:Name="f_name" KeyDown="f_name_KeyDown" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6"></TextBox>
-            <Button x:Name="f_save"  Grid.Row="1" Grid.Column="1" Width="150" Height="20" HorizontalAlignment="left" Margin="6" Click="f_save_Click">speichern</Button>
             
+            <Button x:Name="f_save"  Grid.Row="1" Grid.Column="1" Width="150" Height="20" HorizontalAlignment="left" Margin="6" Click="f_save_Click">speichern</Button>
+            <Button x:Name="kd_delete"  Grid.Row="6" Grid.Column="3" Width="150" HorizontalAlignment="left" Margin="6,20,0,21" Click="kd_delete_Click" >löschen</Button>
         </Grid>
     </Grid>
 </UserControl>

@@ -22,6 +22,7 @@ namespace WpfApp_TestFenster
     /// </summary>
     public partial class Baustellen : UserControl
     {
+
         public int curr_id = 0;
         public Baustellen()
         {
@@ -103,6 +104,16 @@ namespace WpfApp_TestFenster
             }
         }
 
+
+        // Lösch-Button
+      
+        private void kd_delete_Click(object sender, RoutedEventArgs e)
+        {
+            Baustelle foo = new Baustelle(this.curr_id);
+            foo.delete();
+            this.refreshList();
+
+        }
     }
 }
 

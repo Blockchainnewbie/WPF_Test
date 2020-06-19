@@ -7,6 +7,46 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
+        <ListBox x:Name="listing" Margin="12" Width="auto" SelectionChanged="listing_SelectionChanged" ></ListBox>
+
+        <Grid x:Name="formular"  >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"></ColumnDefinition>
+                <ColumnDefinition Width="69*"></ColumnDefinition>
+                <ColumnDefinition Width="15*"></ColumnDefinition>
+                <ColumnDefinition Width="40*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" >Name:</Label>
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,17,0,18" >Kunden ID:</Label>
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" >Ort:</Label>
+            <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,17,0,18" >Projekt Leiter ID:</Label>
+            <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,18,0,17" >Start:</Label>
+            <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,17,0,18" >Ende:</Label>
+
+            <TextBox x:Name="pro_name" KeyDown="kd_name_KeyDown" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="pro_kunde_id" KeyDown="kd_name_KeyDown" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="pro_ort" KeyDown="kd_name_KeyDown" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="pro_leiter_ma_id" KeyDown="kd_name_KeyDown" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="bst_start" KeyDown="kd_name_KeyDown" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+            <TextBox x:Name="bst_ende" KeyDown="kd_name_KeyDown" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="6,22,0,21" Height="18"></TextBox>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
+                <Button x:Name="kd_save"  Grid.Row="6" Grid.Column="3" Width="150" HorizontalAlignment="left" Margin="6,20,0,21" Click="kd_save_Click">speichern</Button>
+                <Button x:Name="kd_delete"  Grid.Row="6" Grid.Column="3" Width="150" HorizontalAlignment="left" Margin="6,20,0,21" Click="kd_delete_Click" >löschen</Button>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </UserControl>

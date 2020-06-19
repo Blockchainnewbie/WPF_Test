@@ -101,5 +101,11 @@ namespace WpfApp_TestFenster
             }
         }
 
+        private void kd_delete_Click(object sender, RoutedEventArgs e)
+        {
+            Firma foo = new Firma (this.curr_id);
+            foo.delete();
+            this.refreshList();
+        }
     }
 }

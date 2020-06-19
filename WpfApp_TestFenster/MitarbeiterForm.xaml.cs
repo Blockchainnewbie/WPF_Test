@@ -38,7 +38,7 @@ namespace WpfApp_TestFenster
             this.formular.Visibility = Visibility.Collapsed;
             this.listing.Visibility = Visibility.Visible;
         }
-
+        // Holt die Daten aus der Datenbank
         private void listing_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.listing.SelectedIndex >= 0)
@@ -76,6 +76,35 @@ namespace WpfApp_TestFenster
                     }
                 }
 
+                // Anrede und Funktion in Combobox holen
+
+                    if ( m.anrede == 1)
+                    {
+                        this.cbanrede.SelectedIndex = 0;
+                    }
+                    if (m.anrede == 2)
+                    {
+                        this.cbanrede.SelectedIndex = 1;
+                    }
+                    if (m.anrede == 3)
+                    {
+                        this.cbanrede.SelectedIndex = 2;
+                    }
+
+                    if (m.funktion == 1)
+                    {
+                        this.cbfunktion.SelectedIndex = 0;
+                    }
+                    if (m.funktion == 2)
+                    {
+                        this.cbfunktion.SelectedIndex = 1;
+                    }
+                    if (m.funktion == 3)
+                    {
+                        this.cbfunktion.SelectedIndex = 2;
+                    }
+
+
                 this.formular.Visibility = Visibility.Visible;
 
             }
@@ -108,12 +137,40 @@ namespace WpfApp_TestFenster
                 f.firmen_id = ((Firma)(this.f_firma.Items[selIndex])).id;
             }
 
-          /*  int cobIndex = this.cbanrede.SelectedIndex;
-           if ( cobIndex != -1)
+           int cobIndex = this.cbanrede.SelectedIndex;
+           if ( cobIndex  != -1 )
             {
-                f.anrede = ((Mitarbeiter)this.cbanrede.SelectedItem[cobIndex])).anrede;
+                if ( this.cbanrede.Text == "Herr")
+                {
+                    f.anrede = 1;
+                }
+                if (this.cbanrede.Text == "Frau")
+                {
+                    f.anrede = 2;
+                }
+                if (this.cbanrede.Text == "Mix")
+                {
+                    f.anrede = 3;
+                }
             }
-            // Abfrage schreiben für Anrede und Funktion*/
+
+            int cobIndexFunk = this.cbfunktion.SelectedIndex;
+            if (cobIndexFunk != -1)
+            {
+                if (this.cbfunktion.Text == "CEO")
+                {
+                    f.funktion = 1;
+                }
+                if (this.cbfunktion.Text == "COF")
+                {
+                    f.funktion = 2;
+                }
+                if (this.cbfunktion.Text == "Slave")
+                {
+                    f.funktion = 3;
+                }
+            }
+
             f.save();
 
 
@@ -131,6 +188,13 @@ namespace WpfApp_TestFenster
         public override string ToString()
         {
             return this.nachname + " " + this.vorname;
+        }
+
+        private void kd_delete_Click(object sender, RoutedEventArgs e)
+        {
+            Mitarbeiter foo = new Mitarbeiter(this.curr_id);
+            foo.delete();
+            this.refreshList();
         }
     }
 }

@@ -34,7 +34,7 @@ namespace WpfApp_TestFenster
             this.listing.Items.Clear();
 
             Einsatz einsatz_neu = new Einsatz();
-            //einsatz_neu.bau_id = " >>> NEUEN Einsatz anlegen <<< ";
+            
             this.listing.Items.Add(einsatz_neu);
 
             ArrayList alleEinsaetze = Einsatz.getAll();
@@ -102,6 +102,12 @@ namespace WpfApp_TestFenster
             }
         }
 
+        private void kd_delete_Click(object sender, RoutedEventArgs e)
+        {
+            Einsatz foo = new Einsatz(this.curr_id);
+            foo.delete();
+            this.refreshList();
+        }
     }
 }
 

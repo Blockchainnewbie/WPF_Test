@@ -60,7 +60,7 @@ namespace WpfApp_TestFenster
                 this.listing.Visibility = Visibility.Collapsed;
 
                 Kunde b = new Kunde(this.curr_id);
-                this.Name = b.name;
+                this.name.Text = b.name;
                 this.strasse.Text = b.strasse;
                 this.hsnr.Text = b.hsnr;
                 this.plz.Text = b.plz;
@@ -81,12 +81,13 @@ namespace WpfApp_TestFenster
         {
             Kunde b = new Kunde(this.curr_id);
 
-            b.name = this.Name;
+            b.name = this.name.Text;
             b.strasse = this.strasse.Text;
-          
-
-          
-           
+            b.hsnr = this.hsnr.Text;
+            b.plz = this.plz.Text;
+            b.ort = this.ort.Text;
+            b.land = this.land.Text;
+  
             b.save();
 
             this.refreshList();
@@ -103,6 +104,13 @@ namespace WpfApp_TestFenster
         private void listing_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
         {
             return;
+        }
+
+        private void kd_delete_Click(object sender, RoutedEventArgs e)
+        {
+            Kunde foo = new Kunde(this.curr_id);
+            foo.delete();
+            this.refreshList();
         }
     }
 }

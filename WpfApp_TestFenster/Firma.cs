@@ -101,7 +101,7 @@ namespace klassen_anwendung_staudinger
 
         public static ArrayList getAll()
         {
-            string sql = "SELECT id FROM firma ORDER BY name";
+            string sql = "SELECT id FROM firma WHERE deleted='0' ORDER BY name";
             List<Dictionary<string, string>> data = MyDB.db_exec(sql);
 
             ArrayList liste = new ArrayList();

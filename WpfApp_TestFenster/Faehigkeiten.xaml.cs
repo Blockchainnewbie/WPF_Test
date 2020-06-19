@@ -90,5 +90,11 @@ namespace WpfApp_TestFenster
             }
         }
 
+        private void kd_delete_Click(object sender, RoutedEventArgs e)
+        {
+            Faehigkeit foo = new Faehigkeit(this.curr_id);
+            foo.delete();
+            this.refreshList();
+        }
     }
 }

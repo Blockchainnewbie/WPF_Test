@@ -48,7 +48,7 @@
             <TextBox x:Name="strasse" KeyDown="f_KeyDown" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18"/>
 
             <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="26" Margin="0,20,315,14" Width="60" >Funktion:</Label>
-            <ComboBox x:Name="funktion" KeyDown="f_KeyDown" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18">
+            <ComboBox x:Name="cbfunktion" KeyDown="f_KeyDown" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="103,28,0,14" Height="18">
                 <ComboBoxItem Content="CEO"/>
                 <ComboBoxItem Content="COF"/>
                 <ComboBoxItem Content="Slave"/>
@@ -77,7 +77,8 @@
 
 
             <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
-                <Button x:Name="save"  Grid.Row="6" Grid.Column="3" Width="150" HorizontalAlignment="Left" Margin="103,20,0,21" Click="f_save_Click">Speichern</Button>
+                <Button x:Name="save"  Grid.Row="6" Grid.Column="3" Width="150" HorizontalAlignment="Left" Margin="50,20,0,21" Click="f_save_Click">Speichern</Button>
+                <Button x:Name="kd_delete"  Grid.Row="6" Grid.Column="3" Width="150" HorizontalAlignment="left" Margin="6,20,0,21" Click="kd_delete_Click" >Löschen</Button>
             </StackPanel>
         </Grid>
     </Grid>

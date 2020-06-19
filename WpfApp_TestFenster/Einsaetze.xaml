@@ -43,7 +43,7 @@
 
             <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
                 <Button x:Name="kd_save"  Grid.Row="6" Grid.Column="3" Width="150" HorizontalAlignment="left" Margin="6,20,0,21" Click="kd_save_Click">speichern</Button>
-
+                <Button x:Name="kd_delete"  Grid.Row="6" Grid.Column="3" Width="150" HorizontalAlignment="left" Margin="6,20,0,21" Click="kd_delete_Click" >löschen</Button>
             </StackPanel>
         </Grid>
     </Grid>

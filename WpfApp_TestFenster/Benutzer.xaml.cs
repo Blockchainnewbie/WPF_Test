@@ -65,11 +65,23 @@ namespace WpfApp_TestFenster
                 this.nachname.Text = b.nachname;
                 this.cb_typ.SelectedItem = b.typ;
                 this.email.Text = b.email;
-                //this.passwort.Text = b.setPasswort;
-                
+
+                if (b.typ == 1)
+                {
+                    this.cb_typ.SelectedIndex = 0;
+                }
+                if (b.typ == 2)
+                {
+                    this.cb_typ.SelectedIndex = 1;
+                }
+                if (b.typ == 3)
+                {
+                    this.cb_typ.SelectedIndex = 2;
+                }
+
 
                 this.formular.Visibility = Visibility.Visible;
-            }
+            } 
         }
 
 
@@ -86,9 +98,28 @@ namespace WpfApp_TestFenster
 
             b.vorname = this.vorname.Text;
             b.nachname = this.nachname.Text;
-            b.typ = (int)this.cb_typ.SelectedItem;
             b.email = this.email.Text;
-            //b.passwort = this.passwort.Password;
+            b.setPasswort(this.passwort.Password);
+
+            int cb_typ_index = this.cb_typ.SelectedIndex;
+            if (cb_typ_index != -1)
+            {
+                if (this.cb_typ.Text == "Admin")
+                {
+                    b.typ = 1;
+                }
+                if (this.cb_typ.Text == "Kunde")
+                {
+                    b.typ = 2;
+                }
+                if (this.cb_typ.Text == "Mitarbeiter")
+                {
+                    b.typ = 3;
+                }
+            }
+
+
+
             b.save();
 
             this.refreshList();
@@ -105,6 +136,13 @@ namespace WpfApp_TestFenster
         private void listing_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
         {
             return;
+        }
+
+        private void kd_delete_Click(object sender, RoutedEventArgs e)
+        {
+            Benutzer1 foo = new Benutzer1(this.curr_id);
+            foo.delete();
+            this.refreshList();
         }
     }
 }
